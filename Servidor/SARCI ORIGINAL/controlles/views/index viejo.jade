@@ -1,0 +1,56 @@
+doctype html
+html
+	head
+		title SARCI
+		meta(charset="utf-8")
+		link(href="style.css" rel="stylesheet" type="text/css")
+		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+		script(type="text/javascript" src="js.js")
+		script(src="../../socket.io/socket.io.js")
+		script(src="../../com.js")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+	body
+		- var foo = "lluvia"
+			if foo == "lluvia"
+				canvas(id="c")
+				script(type="text/javascript") lluvia()
+			if foo == "lluvias"
+				canvas(id="c2")
+				script(type="text/javascript") soleado()
+		.menu-outer
+					.menu-icon
+						.barr
+						.barr
+						.barr
+					nav
+						ul
+							li
+								a(href="#secc1") Probabilidad de lluvia
+							li
+								a(href="#secc2") Graficas de comportamiento
+							li
+								a(href="#secc3") Predicciones
+		.contenedor
+			div(class="seccion" id="secc1")
+				.header Probabilidad de Lluvia
+				div(id="sellPerCirc" class="perCirc")
+					.perCircInner
+						div(class="perCircStat") 0%
+			div(class="seccion" id="secc2")
+				div(class="header gr") Graficas
+				.graph-cont
+					div(class="graph 1")
+					div(class="graph 2")
+					div(class="graph 3")
+					div(class="graph 4")
+			div(class="seccion" id="secc3")
+				div(class="header lg") Probabilidades
+				.graph-cont
+					.graph-prob
+					.log
+						div(id="messages")
+						form(onsubmit="return addMessage(this)")
+							input(type="text" id="username" placeholder="Tu Nombre")
+							input(type="text" id="texto" placeholder="Cuéntanos algo...")
+							input(type="submit" value="Enviar!")

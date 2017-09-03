@@ -1,0 +1,1 @@
+http://mongoosejs.com/docs/advanced_schemas.html para revisar los metodos de mongoose
