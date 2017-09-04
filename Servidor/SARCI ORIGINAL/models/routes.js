@@ -1,5 +1,5 @@
 module.exports= function(app){
-var Seriestv =require ('./serietv');
+var Registros =require ('./registro');
 /*
   var io = require('socket.io')(server);
   io.sockets.on('connection', function(socket) {
@@ -13,11 +13,11 @@ var Seriestv =require ('./serietv');
   });*/
 
 	//Get
-	findAllSeries =function(req,res){
-		Seriestv.find(function(err,seriestv){
-			if(!err)res.send(seriestv);
+	findAllregistos =function(req,res){
+		Registros.find(function(err,registroS){
+			if(!err)res.send(registroS);
 			else console.log('error'+err);
-			var str=""+seriestv+"";
+			var str=""+registroS+"";
 			var ress = str.split(",");
 			console.log("variable str  "+ress[2]);
 		});
@@ -25,64 +25,36 @@ var Seriestv =require ('./serietv');
 
 	//GET
 	findByID =function(req, res){
-		Seriestv.findById(req.params.id,function(err, serietv){
-			if(!err) res.send(serietv);
+		Registros.findById(req.params.id,function(err, registroS){
+			if(!err) res.send(registroS);
 			else console.log('error'+err);
 		});
 	};
 
 	//post
-	addSeriesTv =function(req,res){
+	addRegistroTv =function(req,res){
 		console.log('POST');
 		console.log(req.body);
-		var serietv=new Seriestv({
-			titulo: req.body.titulo,
-			temporadas: req.body.temporadas,
-			pais: req.body.pais,
-			genero: req.body.genero
+		var registroS=new Registros({
+			idTipo: req.body.idTipo,
+			dia: req.body.dia,
+			mes: req.body.mes,
+			año: req.body.año,
+			hora: req.body.hora,
+			porcentaje: req.body.porcentaje
 		});
 
-		serietv.save(function(err){
+		registroS.save(function(err){
 			if(!err) console.log('series guardada');
 			else console.log('error'+err);
 		});
-		res.send(serietv);
+		res.send(registroS);
 	};
 
-
-
-	//PUT UPDATE
-	updateSeries= function(req,res){
-		Seriestv.findById(req.params.id,function(err,serietv){
-			serietv.titulo=req.body.titulo;
-			serietv.temporadas=req.body.temporadas;
-			serietv.pais=req.body.pais;
-			serietv.genero=req.body.genero;
-				serietv.save(function(err){
-				if(!err) console.log('series Actualizada');
-				else console.log('error'+err);
-			})
-		});
-	};
-	//DELETE
-	deleteSeries=function(req,res){
-		Seriestv.findById(req.params.id, function(err,serietv){
-			serietv.remove(function(err){
-				if(!err) console.log('series borrada');
-				else console.log('error'+err);
-			})
-		});
-	}
 
 	//rutas API
-	app.get('/VER', findAllSeries);
+	app.get('/VER', findAllregistos);
 	app.get('/seriestv/:id',findByID);
+	app.post('/AGREGAR', addRegistroTv);
 
-
-	app.post('/AGREGAR', addSeriesTv);
-
-
-
-	app.put('/seriestv/:id',updateSeries);
-	app.delete('/seriestv/:id',deleteSeries);
 }

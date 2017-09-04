@@ -9,7 +9,8 @@ var mongoose=require('mongoose'); // variable de mongo
 var app = express();//variable de express
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-mongoose.connect('mongodb://localhost/seriestv',function(err,res){
+var Registros =require ('./models/registro');
+mongoose.connect('mongodb://localhost/Registros',function(err,res){
   if(err) console.log('error'+err);
   else console.log('conexion BD realizada');
 });
@@ -32,11 +33,23 @@ app.use(express.static(__dirname + '/assets'));//vistas
 // socket
 //Cuando abramos el navegador estableceremos una conexión con socket.io.
 //Cada 5 segundos mandaremos a la gráfica un nuevo valor.
+
 io.sockets.on('connection', function(socket) {
   setInterval(function(){
-      var date = new Date().getTime();
-      var temp = Math.random()*20/1000;
-      socket.emit('temperatureUpdate', date, temp);
+
+    var ultimoRegistro = Registros.find({}).sort({_id:-1}).exec(function(err, data){
+        console.log(data[0].porcentaje);
+        var date = new Date().getTime();
+        var temp = data[0].porcentaje;
+        socket.emit('temperatureUpdate',date,temp);
+    });
+    //console.log(ultimoRegistro)
+    /*{
+      if(!err)res.send(registroS);
+      else console.log('error'+err);
+
+      console.log("variable str  "+ress[2]);*/
+
     }, 2000);
 });
 
