@@ -6,7 +6,9 @@
 
 body
 {
-	background-color:#283593;
+	background-image:url("img/fondo.png");
+  background-position: fixed;
+  background-repeat: repeat-y repeat-x;
 }
 
 .contenedor{
@@ -27,7 +29,7 @@ body
 
 #c{ 
   position: absolute;
-	background: #004C99; 
+	background: #01579B; 
   width: 330px;
   height: 330px;
   border-radius: 100%;
@@ -42,14 +44,15 @@ body
 .header{
 	width: 35%;
 	height: 36px;
-	background-color: rgba(0,25,51, .5);
+	background-color: #0288D1;
+  box-shadow: 0px 0px 10px #888888;
 	border-radius: 10px;
 	border:1px solid rgba(0,25,51, .1);
   margin: 0 auto;
   margin-top: 3%;
   font: 25px arial;
   text-align: center;
-  color: rgba(51,153,255, .6);
+  color: #B3E5FC;
 }
 
 /*-------------------MENU-----------------------*/
@@ -60,6 +63,7 @@ body
 .menu-outer {
   overflow: hidden;
   position: fixed;
+  box-shadow: 0px 0px 15px #888888;
   top: 0;
   font-family: 'Montserrat', serif;
   z-index: 998;  
@@ -67,7 +71,7 @@ body
   left: 100%;
   margin-left: -100px;
   height: 200%;
-  background: rgba(100,200,240,.9);  
+  background: #0277BD;  
   -webkit-transition: all ease .5s;
   -moz-transition: all ease .5s;
   -ms-transition: all ease .5s;
@@ -85,7 +89,7 @@ body
   transform: rotate(-45deg);
 }
 .menu-outer:hover {
-  background: rgba(100,200,240,.98);
+  background: #0277BD;
   left: 85%;
   margin-left: 0;
   -webkit-transform: rotate(0deg);
@@ -231,12 +235,13 @@ nav li {
 .perCirc {
   position: relative;
   text-align: center;
+  box-shadow: 0px 0px 15px #888888;
   margin:30px auto;
   width: 410px;
   height: 410px;
   animation: logo 1s;
   border-radius: 100%;
-  background-color: #000099;
+  background-color: #0277BD;
   background-image: linear-gradient(91deg, transparent 50%, #000099 50%), linear-gradient(90deg, #000099 50%, transparent 50%);
 }
 .perCirc .perCircInner {
@@ -247,12 +252,12 @@ nav li {
   width: 330px;
   height: 330px;
   border-radius: 100%;
-  background-color: #eee;
+  background-color: #0277BD;
 }
 .perCirc .perCircInner div {
   position: relative;
   top: 40%;
-  color:#777;
+  color:#B3E5FC;
 }
 .perCirc .perCircStat {
   font-size: 60px;
@@ -383,18 +388,18 @@ nav li {
   }
 
   .perCirc {
-    width: 340px;
-    height: 340px;
+    width: 310px;
+    height: 310px;
   }
 
   .perCirc .perCircInner {
-    width: 260px;
-    height: 260px;
+    width: 230px;
+    height: 230px;
   }
 
   .perCirc .perCircInner #c{
-    width: 260px;
-    height: 260px;
+    width: 230px;
+    height: 230px;
   }
 
 }

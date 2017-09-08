@@ -7,11 +7,12 @@ html
 		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
 		script(type="text/javascript" src="js.js")
+		script(type="text/javascript" src="soket.js")
 		script(src="../../socket.io/socket.io.js")
-		script(src="../../com.js")
+		script(src="http://code.highcharts.com/highcharts.js")
 		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
 	body
-		- var foo = "lluvia"
+		- var foo = "lluviaas"
 			if foo == "lluvia"
 				canvas(id="c")
 				script(type="text/javascript") lluvia()
@@ -36,6 +37,8 @@ html
 				.header Probabilidad de Lluvia
 				div(id="sellPerCirc" class="perCirc")
 					.perCircInner
+						canvas(id="c")
+						script(type="text/javascript") lluvia()
 						div(class="perCircStat") 0%
 			div(class="seccion" id="secc2")
 				div(class="header gr") Graficas
@@ -48,9 +51,5 @@ html
 				div(class="header lg") Probabilidades
 				.graph-cont
 					.graph-prob
+						div(id="container" style="width: 100%; height: 99.5%; margin: 0 auto")
 					.log
-						div(id="messages")
-						form(onsubmit="return addMessage(this)")
-							input(type="text" id="username" placeholder="Tu Nombre")
-							input(type="text" id="texto" placeholder="Cuéntanos algo...")
-							input(type="submit" value="Enviar!")
